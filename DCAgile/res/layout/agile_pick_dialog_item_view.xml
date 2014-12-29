@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    android:paddingTop="@dimen/agile_pick_dialog_item_padding"
+    android:paddingBottom="@dimen/agile_pick_dialog_item_padding"
+    >
+
+    <ImageView
+        android:id="@+id/pick_item_img_imv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/pick_item_title_txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/pick_item_img_imv"
+        android:textColor="#999999"
+        android:textSize="@dimen/sp_14" />
+
+    <CheckBox
+        android:id="@+id/pick_item_flag_ckb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:focusable="false"   
+        android:focusableInTouchMode="false"   
+        android:clickable="false" 
+        android:button="@drawable/agile_pick_dialog_checkbox_bg" />
+
+</RelativeLayout>
