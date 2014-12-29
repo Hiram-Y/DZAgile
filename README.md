@@ -53,10 +53,10 @@ public class C_Login extends DCAgileTask<Object, Object> { //继承 DCAgileTask,
 		return doRequestFromHttp(url, params.toString(), httpType);
 	}
 	
-Sample里有个controller包，大家可以把这个类放进去，就统称这些类为Controller吧，创建好controller后，再创建一个解析类：
+Sample里有个controller包，大家可以把这个类放进去，就统称这些类为Controller吧，创建好Controller后，再创建一个解析类：
 
 
-下面这个类的功能是解析数据
+下面这个类的功能是解析数据：
 public class M_Login extends M_Base { //这个继承是为了解析共有属性。比如一般接口都会返回code,mesage字段。看源码吧。
 
 	private M_User user = new M_User();//用户实体，不解释
