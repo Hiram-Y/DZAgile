@@ -114,4 +114,4 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 		}
 	}
 
-整个过程应该清楚了吧。View里调用Controller请求数据，Controller拿到数据后解析，解析完了之后返回给View。还是有点MVC的感觉的，哇哈哈。
+整个过程应该清楚了吧。View里调用Controller请求数据，Controller拿到数据后调用Model进行解析，解析完了之后返回给View。还是有点MVC的感觉的，哇哈哈。
