@@ -12,7 +12,7 @@ DCAgile 1.0主要功能：
 
 -----------------------------------------去吧，皮卡丘-------------------------------------------------------
 
-先说说比较常用的吧，DCAgile网络请求的用法：
+一、网络请求
 
 先创建一个C_Login类，这个类功能是发送网络请求。拿到数据后调用解析类解析，解析完了之后把数据传给使用的View。
 
@@ -115,3 +115,32 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 	}
 
 整个过程应该清楚了吧。View里调用Controller请求数据，Controller拿到数据后调用Model进行解析，解析完了之后返回给View。还是有点MVC的感觉的，哇哈哈。
+
+
+二、应用程序更新
+ 首先必须检测版本，这个用上面网络请求类做就可以了。
+ 判断有新版本后弹出对话框，看看DCAgile怎么呼出自定义的对话框：
+ 
+ 	public void showUpdateDialog() {
+
+		String content = "版本号:" + version.getVerName() + "\t\t\t\t大小:"
+				+ version.getApkSize() + "M\n" + version.getVerInfo();
+		DCPromptDialogParams params = new DCPromptDialogParams("应用更新", content, "以后再说", "立即更新");
+	// 第一个参数：对话框title文字，第二个参数：对话框提示文字，第三个参数：左边按钮文字，第四个参数：右边按钮文字
+		setDialog(params); 
+		DCCommonDialogView commonDialogView = new DCCommonDialogView(this,
+				params); 
+		int height = DCApplication.getApp().getWorkSpaceHeight() / 3 * 1;
+		commonDialogView.setDialogSize(height); // 设置对话框高度
+		commonDialogView.prompt_content.setLineSpacing(5f, 1f); //设置提示文字间距
+		commonDialogView.open(); 
+
+	}
+
+	public void setDialog(DCPromptDialogParams params) {
+		params.setPromptBtnCallback(this); //设置按钮点击事件
+		params.setTopViewBgColor(0xff3a3c42); //对话框title背景颜色
+		params.setLeftBgColor(getColor(R.color.dialog_gray_btn)); //左边按钮背景颜色
+		params.setRightBgColor(getColor(R.color.dialog_green_btn)); // 右边按钮背景颜色
+	}
+
