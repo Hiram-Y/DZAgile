@@ -118,6 +118,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 
 
 二、应用程序更新
+
  首先必须检测版本，这个用上面网络请求类做就可以了。
  判断有新版本后弹出对话框，看看DCAgile怎么呼出自定义的对话框：
  
@@ -143,4 +144,27 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 		params.setLeftBgColor(getColor(R.color.dialog_gray_btn)); //左边按钮背景颜色
 		params.setRightBgColor(getColor(R.color.dialog_green_btn)); // 右边按钮背景颜色
 	}
+	
+	下来处理对话框点击事件：
+	
+		@Override
+	public void onClick(DCiDialog dialog, View view, Position position,
+			int eventCode) {
+		if (position == Position.RIGHT) {
+			downloadPackage();
+		}
+		dialog.close();
+	}
+	
+	点击了右边按钮也就是立即更新时，开始下载：
+	
+		public void downloadPackage() {
+		String url = version.getApkUrl();
+		DCDownloadFileAsyncTask downloadFileAsyncTast = new DCDownloadFileAsyncTask(
+				url, new DCInstallApk(DCPackageInfo.getAppName(this), url));
+		downloadFileAsyncTast.execute();
+	}
+	
+	就是这几行代码了，剩下的就不用管了。
+
 
