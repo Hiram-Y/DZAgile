@@ -157,16 +157,15 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 	}
 	
 	点击了右边按钮也就是立即更新时，开始下载：
-	```Java
-		public void downloadPackage() {
+	
+	public void downloadPackage() {
 		String url = version.getApkUrl();
 		DCDownloadFileAsyncTask downloadFileAsyncTast = new DCDownloadFileAsyncTask(
 				url, new DCInstallApk(DCPackageInfo.getAppName(this), url));
 		downloadFileAsyncTast.execute();
 	}
-	```
 	就是这几行代码了，剩下的就不用管了。看看效果，是不是很帅啊。
-	![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_dialog_sample.jpg) 
+![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_dialog_sample.jpg)
 	
 
 
