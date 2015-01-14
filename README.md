@@ -12,7 +12,7 @@ DCAgile
 
 -----------------------------------------去吧，皮卡丘-------------------------------------------------------
 
-## 一、网络请求
+## 1、网络请求
 
 先创建一个C_Login类，这个类功能是发送网络请求。拿到数据后调用解析类解析，解析完了之后把数据传给使用的View。
 
@@ -39,6 +39,7 @@ public class C_Login extends DCAgileTask<Object, Object> { //继承 DCAgileTask,
 	}
 
 }
+
 这里我们发送参数用了JSON，当然还有更多选择，可以看看DCAgileTask类：
 
 	public DCiResponse doTask(String url, DCRequestParams params, int httpType) {
@@ -81,6 +82,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 		this.user = user;
 	}
 }
+
 大家可以把这个类放在model包里，统称Model。
 
 创建完这两个类就可以发起网络请求了，这个发送是在View里，一般就是Activity
@@ -117,7 +119,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 整个过程应该清楚了吧。View里调用Controller请求数据，Controller拿到数据后调用Model进行解析，解析完了之后返回给View。还是有点MVC的感觉的，哇哈哈。
 
 
-## 二、应用程序更新
+## 2、应用程序更新
 
  首先必须检测版本，这个用上面网络请求类做就可以了。
  判断有新版本后弹出对话框，看看DCAgile怎么呼出自定义的对话框：
@@ -164,8 +166,28 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 				url, new DCInstallApk(DCPackageInfo.getAppName(this), url));
 		downloadFileAsyncTast.execute();
 	}
+	
 	就是这几行代码了，剩下的就不用管了。看看效果，是不是很帅啊。
 ![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_dialog_sample.jpg)
-	
 
+##    3、对话框
+   DCAgile目前为止有4种对话框，分别为提示对话、选择对话框、操作对话、加载对话框。
+   
+###   3.1 提示对话框
+   上面下载更新那个对话框就是提示对话框，`DCPromptDialogParams`类里可设置对话框的标题、提示语、按钮等样式。效果图如上图，就不多说了。
+
+###   3.2 选择对话框
+    选择对话框和提示对话框使用方法大同小异。
+
+		DCPickDialogView dialgo = new DCPickDialogView(this, params); // 创建选择对话框
+		DCPickDialogAdapter adapter = new DCPickDialogAdapter(this, getItems()); // 需要使用指定Adapter
+		dialog.setAdapter(adapter);// 设置选择列表数据
+
+![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_pick_dialog.jpg)
+
+###   3.3 操作对话框
+操作对话框需要使用`DCListDialogAdapter`适配器。
+![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_operation_dialog.jpg)      
+      
+   
 
