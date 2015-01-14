@@ -187,6 +187,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 
 ###   3.3 操作对话框
 操作对话框需要使用`DCListDialogAdapter`适配器。
+
 ![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_operation_dialog.jpg)      
       
    
