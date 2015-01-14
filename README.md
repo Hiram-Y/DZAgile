@@ -1,12 +1,12 @@
 DCAgile
 =======
-DCAgile 1.0主要功能：
-1、特定UI样式快速搭建（比如Tab类UI），方便各位快速搭建常见应用框架。
-2、网络请求和图片异步加载这种框架标配就不说了。(图片异步加载使用了Volley,你懂得)
-3、应用更新，只需几行代码就搞定了，有木有？
-4、Toast、DIalog常见控件封装有木有？数据库有木有？这些肯定都有。
-5、控件注解绑定。
-6、自己去挖掘吧。
+####DCAgile 1.0主要功能：
+1、特定UI样式快速搭建（比如Tab类UI），方便各位快速搭建常见应用框架；<br>
+2、网络请求和图片异步加载这种框架标配就不说了(图片异步加载使用了Volley,你懂得)；<br>
+3、应用更新，只需几行代码就搞定了，有木有？<br>
+4、Toast、DIalog常见控件封装有木有？数据库有木有？这些肯定都有；<br>
+5、控件注解绑定；<br>
+6、自己去挖掘吧；<br>
 
 可以先看看Sample，了解大概的架构。Sample现在只是一个简单的例子，很多框架的功能都没展示出来，会持续更新。
 
@@ -157,15 +157,16 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 	}
 	
 	点击了右边按钮也就是立即更新时，开始下载：
-	
+	```Java
 		public void downloadPackage() {
 		String url = version.getApkUrl();
 		DCDownloadFileAsyncTask downloadFileAsyncTast = new DCDownloadFileAsyncTask(
 				url, new DCInstallApk(DCPackageInfo.getAppName(this), url));
 		downloadFileAsyncTast.execute();
 	}
-	
+	```
 	就是这几行代码了，剩下的就不用管了。看看效果，是不是很帅啊。
-	![image](https://github.com/decadezuo/DCAgile/Res/dcagile_dialog_sample.jpg)
+	![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_dialog_sample.jpg) 
+	
 
 
