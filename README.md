@@ -14,7 +14,6 @@ DCAgile 1.0主要功能：
 
 一、网络请求
 =======
-
 先创建一个C_Login类，这个类功能是发送网络请求。拿到数据后调用解析类解析，解析完了之后把数据传给使用的View。
 
 public class C_Login extends DCAgileTask<Object, Object> { //继承 DCAgileTask,这个是请求任务，可查看源码，一目了然
@@ -119,7 +118,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 
 
 二、应用程序更新
-
+=======
  首先必须检测版本，这个用上面网络请求类做就可以了。
  判断有新版本后弹出对话框，看看DCAgile怎么呼出自定义的对话框：
  
