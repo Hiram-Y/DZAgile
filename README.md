@@ -191,4 +191,5 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 ![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_operation_dialog.jpg)      
       
    
-
+####作者
+ Decade.Zuo
