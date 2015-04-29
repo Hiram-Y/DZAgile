@@ -1,6 +1,6 @@
-DCAgile
+Agile
 =======
-####DCAgile 1.0主要功能：
+####Agile 1.0主要功能：
 1、特定UI样式快速搭建（比如Tab类UI），方便各位快速搭建常见应用框架；<br>
 2、网络请求和图片异步加载这种框架标配就不说了(图片异步加载使用了Volley,你懂得)；<br>
 3、应用更新，只需几行代码就搞定了，有木有？<br>
@@ -168,7 +168,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 	}
 	
 	就是这几行代码了，剩下的就不用管了。看看效果，是不是很帅啊。
-![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_dialog_sample.jpg)
+![](https://github.com/decadezuo/Agile/blob/master/Res/dcagile_dialog_sample.jpg)
 
 ##    3、对话框
    DCAgile目前为止有4种对话框，分别为提示对话、选择对话框、操作对话、加载对话框。
@@ -183,7 +183,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 		DCPickDialogAdapter adapter = new DCPickDialogAdapter(this, getItems()); // 需要使用指定Adapter
 		dialog.setAdapter(adapter);// 设置选择列表数据
 
-![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_pick_dialog.jpg)
+![](https://github.com/decadezuo/Agile/blob/master/Res/dcagile_pick_dialog.jpg)
 
 ###   3.3 操作对话框
 操作对话框需要使用`DCListDialogAdapter`适配器。
