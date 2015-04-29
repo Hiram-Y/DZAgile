@@ -1,6 +1,6 @@
-DCAgile
+DZAgile
 =======
-####DCAgile 1.0主要功能：
+####DZAgile 1.0主要功能：
 1、特定UI样式快速搭建（比如Tab类UI），方便各位快速搭建常见应用框架；<br>
 2、网络请求和图片异步加载这种框架标配就不说了(图片异步加载使用了Volley,你懂得)；<br>
 3、应用更新，只需几行代码就搞定了，有木有？<br>
@@ -16,14 +16,14 @@ DCAgile
 
 先创建一个C_Login类，这个类功能是发送网络请求。拿到数据后调用解析类解析，解析完了之后把数据传给使用的View。
 
-public class C_Login extends DCAgileTask<Object, Object> { //继承 DCAgileTask,这个是请求任务，可查看源码，一目了然
+public class C_Login extends DZAgileTask<Object, Object> { //继承 DZAgileTask,这个是请求任务，可查看源码，一目了然
 
-	public C_Login(Context context, DCAsyncTaskParams taskParams) {
+	public C_Login(Context context, DZAsyncTaskParams taskParams) {
 		super(context, taskParams);
 	}
 
 	@Override
-	protected DCiResponse doInBackground(Object... params) {
+	protected DZiResponse doInBackground(Object... params) {
 		JSONObject p = new JSONObject(); 
 		try {
 			p.put("commandId", AppConstants.USER_LOGIN); //组装请求参数
@@ -40,17 +40,17 @@ public class C_Login extends DCAgileTask<Object, Object> { //继承 DCAgileTask,
 
 }
 
-这里我们发送参数用了JSON，当然还有更多选择，可以看看DCAgileTask类：
+这里我们发送参数用了JSON，当然还有更多选择，可以看看DZAgileTask类：
 
-	public DCiResponse doTask(String url, DCRequestParams params, int httpType) {
+	public DZiResponse doTask(String url, DCRequestParams params, int httpType) {
 		return doRequestFromHttp(url, params, httpType);
 	}
 	
-	public DCiResponse doTask(String url, JSONObject params, int httpType) {
+	public DZiResponse doTask(String url, JSONObject params, int httpType) {
 		return doTask(url, params.toString(), httpType);
 	}
 	
-	public DCiResponse doTask(String url, String params, int httpType) {
+	public DZiResponse doTask(String url, String params, int httpType) {
 		return doRequestFromHttp(url, params.toString(), httpType);
 	}
 	
@@ -63,7 +63,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 
 	private M_User user = new M_User();//用户实体，不解释
 	@Override
-	public DCiResponse paser(String json) throws Exception { // 网络请求拿到数据后会调用此方法进行解析。看源码。
+	public DZiResponse paser(String json) throws Exception { // 网络请求拿到数据后会调用此方法进行解析。看源码。
 		super.paser(json);
 		JSONObject body = new JSONObject(json).optJSONObject("body");
 		user.setUid(body.optString("userId"));
@@ -88,7 +88,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 创建完这两个类就可以发起网络请求了，这个发送是在View里，一般就是Activity
 
 		M_Login login = new M_Login(); //刚才建的Model
-			DCAsyncTaskParams params = new DCAsyncTaskParams(this, login, null,
+			DZAsyncTaskParams params = new DZAsyncTaskParams(this, login, null,
 					0); //第一个参数：回调接口，第二个解析类，第三个，缓存策略。第四个，请求码。 不懂看源码。
 			params.setPromptContent("正在登录"); //提示信息，不解释。
 			C_Login task = new C_Login(this, params); //刚才创建的Controller。还记得吧？
@@ -100,7 +100,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 不是吧，忘了接收收据了。数据现在还在Model手里呢，需要数据的是View啊。好吧，接收数据在这里：
 
 	@Override
-	public void onComplete(DCiResponse response, int requestCode) {
+	public void onComplete(DZiResponse response, int requestCode) {
 		if (response != null) {
 			if (requestCode == 0) {
 				M_Login login = (M_Login) response;
@@ -108,7 +108,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
                    //登录成功，后续处理。
 				} else {
 					if (!TextUtils.isEmpty(login.getMsg())) {
-						DCRectToast.showToastShort(this, login.getMsg(),
+						DZRectToast.showToastShort(this, login.getMsg(),
 								ToastTheme.ERROR);
 					}
 				}
@@ -122,25 +122,25 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 ## 2、应用程序更新
 
  首先必须检测版本，这个用上面网络请求类做就可以了。
- 判断有新版本后弹出对话框，看看DCAgile怎么呼出自定义的对话框：
+ 判断有新版本后弹出对话框，看看DZAgile怎么呼出自定义的对话框：
  
  	public void showUpdateDialog() {
 
 		String content = "版本号:" + version.getVerName() + "\t\t\t\t大小:"
 				+ version.getApkSize() + "M\n" + version.getVerInfo();
-		DCPromptDialogParams params = new DCPromptDialogParams("应用更新", content, "以后再说", "立即更新");
+		DZPromptDialogParams params = new DZPromptDialogParams("应用更新", content, "以后再说", "立即更新");
 	// 第一个参数：对话框title文字，第二个参数：对话框提示文字，第三个参数：左边按钮文字，第四个参数：右边按钮文字
 		setDialog(params); 
-		DCCommonDialogView commonDialogView = new DCCommonDialogView(this,
+		DCZommonDialogView commonDialogView = new DZCommonDialogView(this,
 				params); 
-		int height = DCApplication.getApp().getWorkSpaceHeight() / 3 * 1;
+		int height = DZApplication.getApp().getWorkSpaceHeight() / 3 * 1;
 		commonDialogView.setDialogSize(height); // 设置对话框高度
 		commonDialogView.prompt_content.setLineSpacing(5f, 1f); //设置提示文字间距
 		commonDialogView.open(); 
 
 	}
 
-	public void setDialog(DCPromptDialogParams params) {
+	public void setDialog(DZPromptDialogParams params) {
 		params.setPromptBtnCallback(this); //设置按钮点击事件
 		params.setTopViewBgColor(0xff3a3c42); //对话框title背景颜色
 		params.setLeftBgColor(getColor(R.color.dialog_gray_btn)); //左边按钮背景颜色
@@ -150,7 +150,7 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 	下来处理对话框点击事件：
 	
 		@Override
-	public void onClick(DCiDialog dialog, View view, Position position,
+	public void onClick(DZiDialog dialog, View view, Position position,
 			int eventCode) {
 		if (position == Position.RIGHT) {
 			downloadPackage();
@@ -162,33 +162,33 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 	
 	public void downloadPackage() {
 		String url = version.getApkUrl();
-		DCDownloadFileAsyncTask downloadFileAsyncTast = new DCDownloadFileAsyncTask(
+		DZDownloadFileAsyncTask downloadFileAsyncTast = new DZDownloadFileAsyncTask(
 				url, new DCInstallApk(DCPackageInfo.getAppName(this), url));
 		downloadFileAsyncTast.execute();
 	}
 	
 	就是这几行代码了，剩下的就不用管了。看看效果，是不是很帅啊。
-![](https://github.com/decadezuo/Agile/blob/master/Res/dcagile_dialog_sample.jpg)
+![](https://github.com/decadezuo/DZAgile/blob/master/Res/dcagile_dialog_sample.jpg)
 
 ##    3、对话框
-   DCAgile目前为止有4种对话框，分别为提示对话、选择对话框、操作对话、加载对话框。
+   DZAgile目前为止有4种对话框，分别为提示对话、选择对话框、操作对话、加载对话框。
    
 ###   3.1 提示对话框
-   上面下载更新那个对话框就是提示对话框，`DCPromptDialogParams`类里可设置对话框的标题、提示语、按钮等样式。效果图如上图，就不多说了。
+   上面下载更新那个对话框就是提示对话框，`DZPromptDialogParams`类里可设置对话框的标题、提示语、按钮等样式。效果图如上图，就不多说了。
 
 ###   3.2 选择对话框
     选择对话框和提示对话框使用方法大同小异。
 
-		DCPickDialogView dialgo = new DCPickDialogView(this, params); // 创建选择对话框
-		DCPickDialogAdapter adapter = new DCPickDialogAdapter(this, getItems()); // 需要使用指定Adapter
+		DZPickDialogView dialgo = new DZPickDialogView(this, params); // 创建选择对话框
+		DZPickDialogAdapter adapter = new DZPickDialogAdapter(this, getItems()); // 需要使用指定Adapter
 		dialog.setAdapter(adapter);// 设置选择列表数据
 
-![](https://github.com/decadezuo/Agile/blob/master/Res/dcagile_pick_dialog.jpg)
+![](https://github.com/decadezuo/DZAgile/blob/master/Res/dcagile_pick_dialog.jpg)
 
 ###   3.3 操作对话框
-操作对话框需要使用`DCListDialogAdapter`适配器。
+操作对话框需要使用`DZListDialogAdapter`适配器。
 
-![](https://github.com/decadezuo/DCAgile/blob/master/Res/dcagile_operation_dialog.jpg)      
+![](https://github.com/decadezuo/DZAgile/blob/master/Res/dcagile_operation_dialog.jpg)      
       
  ---------------------------------------------------------------------------------------------------------------------
 
