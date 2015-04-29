@@ -42,7 +42,7 @@ public class C_Login extends DZAgileTask<Object, Object> { //继承 DZAgileTask,
 
 这里我们发送参数用了JSON，当然还有更多选择，可以看看DZAgileTask类：
 
-	public DZiResponse doTask(String url, DCRequestParams params, int httpType) {
+	public DZiResponse doTask(String url, DZRequestParams params, int httpType) {
 		return doRequestFromHttp(url, params, httpType);
 	}
 	
