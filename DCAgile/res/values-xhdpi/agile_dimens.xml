@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
-        <!-- 选择对话框 -->
-    
-     <dimen name="agile_pick_dialog_item_padding">10dp</dimen>
-          
-</resources>
