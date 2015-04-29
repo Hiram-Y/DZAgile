@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Sun Jan 04 09:48:05 CST 2015
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=dcframework_0.5.jar
+manifest.mergeall=true
+manifest.mainclass=
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=<po|DCFramework>~com/~decade/~framework/~R$attr.class;<po|DCFramework>~com/~decade/~framework/~R$drawable.class;<po|DCFramework>~com/~decade/~framework/~R$layout.class;<po|DCFramework>~com/~decade/~framework/~R$string.class;<po|DCFramework>~com/~decade/~framework/~R.class;<jar|android-support-v4.jar>;<jar|annotations.jar>
+includes=<inc|DCFramework/jocky\\bin\\classes>

@@ -16,12 +16,12 @@ import android.widget.TextView;
 
 import com.decade.framework.annotation.DCViewProcessor;
 import com.decade.framework.components.DCBroadcaseDefine;
+import com.decade.framework.kit.DCBuild;
 
 /**
  * @description: 整个框架基础Activity，此Activity继承至FragmentActivity
  * @author: Decade
  * @date: 2013-5-2
- * @preserve protected
  */
 
 public abstract class DCActivity extends FragmentActivity {
@@ -59,7 +59,7 @@ public abstract class DCActivity extends FragmentActivity {
 	 * @description: 数据发放接收器
 	 * @author: Decade
 	 * @date: 2013-9-16
-	 * @preserve protected
+	 * 
 	 */
 	public class DCDispenseDataBroadcast extends BroadcastReceiver {
 		@Override
@@ -127,7 +127,9 @@ public abstract class DCActivity extends FragmentActivity {
 	private void initContentView() {
 		setTopView(getTopViewLoader());
 		setBottomView(getBottomViewLoader());
-		DCViewProcessor.bind(this);
+		if(DCBuild.isInject()){
+			DCViewProcessor.bind(this);
+		}
 	}
 
 	protected abstract DCiTopView getTopViewLoader();
@@ -182,6 +184,11 @@ public abstract class DCActivity extends FragmentActivity {
 
 	public View getBottomView() {
 		return _bottomViewLoader != null ? _bottomViewLoader.getBottomView()
+				: null;
+	}
+
+	public TextView getUnreadView() {
+		return _bottomViewLoader != null ? _bottomViewLoader.getUnreadView()
 				: null;
 	}
 
@@ -633,6 +640,70 @@ public abstract class DCActivity extends FragmentActivity {
 	}
 
 	/**
+	 * 设置左边按钮Padding
+	 * 
+	 * @param left
+	 * @param top
+	 * @param right
+	 * @param bottom
+	 */
+	public final void setTopLeftViewPadding(int left, int top, int right,
+			int bottom) {
+		TextView leftView = (TextView) getTopLeftView();
+		if (leftView != null) {
+			leftView.setPadding(left, top, right, bottom);
+		}
+	}
+
+	public final void setTopLeftSecondViewPadding(int left, int top, int right,
+			int bottom) {
+		TextView leftSecond = (TextView) getTopLeftSecondView();
+		if (leftSecond != null) {
+			leftSecond.setPadding(left, top, right, bottom);
+		}
+	}
+
+	public final void setTopLeftThirdViewPadding(int left, int top, int right,
+			int bottom) {
+		TextView leftThird = (TextView) getTopLeftThirdView();
+		if (leftThird != null) {
+			leftThird.setPadding(left, top, right, bottom);
+		}
+	}
+
+	/**
+	 * 设置右边按钮Padding
+	 * 
+	 * @param left
+	 * @param top
+	 * @param right
+	 * @param bottom
+	 */
+	public final void setTopRightViewPadding(int left, int top, int right,
+			int bottom) {
+		TextView rightView = (TextView) getTopRightView();
+		if (rightView != null) {
+			rightView.setPadding(left, top, right, bottom);
+		}
+	}
+
+	public final void setTopRightSecondViewPadding(int left, int top,
+			int right, int bottom) {
+		TextView rightSecond = (TextView) getTopRightSecondView();
+		if (rightSecond != null) {
+			rightSecond.setPadding(left, top, right, bottom);
+		}
+	}
+
+	public final void setTopRightThirdViewPadding(int left, int top, int right,
+			int bottom) {
+		TextView rightThird = (TextView) getTopRightThirdView();
+		if (rightThird != null) {
+			rightThird.setPadding(left, top, right, bottom);
+		}
+	}
+
+	/**
 	 * 设置左边按钮激活性
 	 * 
 	 * @param enabled
@@ -788,15 +859,15 @@ public abstract class DCActivity extends FragmentActivity {
 		return _isLoading;
 	}
 
-	public final float getDimension(int resId) {
+	public final float getDimensionById(int resId) {
 		return getResources().getDimension(resId);
 	}
 
-	public final Drawable getDrawable(int resId) {
+	public final Drawable getDrawableById(int resId) {
 		return getResources().getDrawable(resId);
 	}
 
-	public final int getColor(int resId) {
+	public final int getColorById(int resId) {
 		return getResources().getColor(resId);
 	}
 }

@@ -32,7 +32,7 @@ import android.graphics.drawable.Drawable;
  * @description: 图片处理工具类
  * @author: Decade
  * @date: 2013-9-16
- * @preserve protected
+ * 
  */
 public class DCImageUtils {
 	public static final int LEFT = 0;
@@ -487,6 +487,18 @@ public class DCImageUtils {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	/**
+	 * 按比例解码图片
+	 * 
+	 * @param options
+	 * @param minSideLength
+	 * @param maxNumOfPixels
+	 * @return
+	 */
+	public static Bitmap getBitmapFromFile(Bitmap bitmap, int width, int height) {
+		return getBitmapFromFile(bitmapToBytes(bitmap), width, height);
 	}
 
 	/**

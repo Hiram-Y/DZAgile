@@ -10,30 +10,35 @@ import com.decade.framework.DCApplication;
 import com.decade.framework.kit.DCLog;
 
 /**
- * @description: 
+ * @description:
  * @author: Decade
  * @date: 2013-5-7
- * @preserve protected
+ * 
  */
 public class DCWorkspace {
-	
+
 	/**
 	 * 获取当前手机屏幕工作空间大小，保存到App里。
+	 * 
 	 * @param context
 	 */
 	public static void saveWorkspaceSize(Activity activity) {
 		DisplayMetrics dm = new DisplayMetrics();
 		activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
-		if(DCApplication.getApp() == null){
+		if (DCApplication.getApp() == null) {
 			DCLog.e(DCWorkspace.class, "The application does not initialize");
 			return;
 		}
+		DCLog.e(DCWorkspace.class, "density = " + dm.density + " densityDpi = "
+				+ dm.densityDpi + " widthPixels = " + dm.widthPixels
+				+ " heightPixels = " + dm.heightPixels);
 		DCApplication.getApp().setDensity(dm.density);
 		DCApplication.getApp().setWorkSpaceWidth(dm.widthPixels);
-		DCApplication.getApp().setWorkSpaceHeight(getWorkspaceHight(activity,dm.heightPixels));
+		DCApplication.getApp().setWorkSpaceHeight(
+				getWorkspaceHight(activity, dm.heightPixels));
 	}
 
-	private static int getWorkspaceHight(Activity activity,int screenHight) {
+	private static int getWorkspaceHight(Activity activity, int screenHight) {
 		Class<?> c = null;
 		Object obj = null;
 		Field field = null;
@@ -46,14 +51,14 @@ public class DCWorkspace {
 			sbar = activity.getResources().getDimensionPixelSize(x);
 			return screenHight - sbar;
 		} catch (Exception e1) {
-			DCLog.e(DCWorkspace.class,"get status bar height fail");
+			DCLog.e(DCWorkspace.class, "get status bar height fail");
 			e1.printStackTrace();
 		}
 		return 770;
 	}
-	
-	public static float convertSizeWithDensity(Context context,int sizeId){
+
+	public static float convertSizeWithDensity(Context context, int sizeId) {
 		float density = DCApplication.getApp().getDensity();
-		return context.getResources().getDimension(sizeId)/density;
+		return context.getResources().getDimension(sizeId) / density;
 	}
 }

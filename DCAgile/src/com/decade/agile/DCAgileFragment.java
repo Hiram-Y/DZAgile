@@ -11,29 +11,29 @@ import com.decade.framework.async.DCiResponse;
 public class DCAgileFragment extends Fragment implements DCiAsyncTaskCallback {
 
 	@Override
-	public void onJsonPaserError(String message) {
+	public void onJsonPaserError(String message,int requestCode) {
 		DCRectToast.showToastShort(getActivity(), "数据解析异常!", ToastTheme.ERROR);
 
 	}
 
 	@Override
-	public void onNetDisconnected() {
+	public void onNetDisconnected(int requestCode) {
 		DCRectToast.showToastShort(getActivity(), "网络异常!", ToastTheme.WARNING);
 	}
 
 	@Override
-	public void onServerResponseError(String message) {
+	public void onServerResponseError(String message,int requestCode) {
 		DCRectToast.showToastShort(getActivity(), "请求异常!", ToastTheme.ERROR);
 
 	}
 
 	@Override
-	public void openTopLoadView() {
+	public void openTopLoadView(int requestCode) {
 		((DCActivity) getActivity()).openLoading();
 	}
 
 	@Override
-	public void closeTopLoadView() {
+	public void closeTopLoadView(int requestCode) {
 		((DCActivity) getActivity()).closeLoading();
 	}
 

@@ -4,7 +4,7 @@ package com.decade.framework.async;
  * @description:
  * @author: Decade
  * @date: 2013-5-6
- * @preserve protected
+ * 
  */
 public class DCAsyncTaskParams {
 	private static final int DEFAULT_REQUESTCODE = -10000;

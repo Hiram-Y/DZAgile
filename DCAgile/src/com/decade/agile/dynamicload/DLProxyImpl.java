@@ -19,6 +19,7 @@ package com.decade.agile.dynamicload;
 
 import java.lang.reflect.Constructor;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -26,6 +27,7 @@ import android.content.pm.PackageInfo;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -95,7 +97,7 @@ public class DLProxyImpl {
         launchTargetActivity(mode);
     }
 
-//    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     protected void launchTargetActivity(int mode) {
         try {
             Class<?> localClass = getClassLoader().loadClass(mClass);

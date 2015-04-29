@@ -42,9 +42,6 @@ public class DCDialogHelper {
 			}
 			_dialog = DCRectDialog.getInstance(context, params);
 		}
-		if (_dialog != null) {
-			_dialog.open();
-		}
 	}
 
 	/**
@@ -59,6 +56,16 @@ public class DCDialogHelper {
 	public static void openPrompt(Context context, String content,
 			DialogTheme theme) {
 		createPrompt(context, content, theme);
+		openPrompt();
+	}
+	
+	/**
+	 * 打开加载对话框
+	 */
+	public static void openPrompt() {
+		if (_dialog != null) {
+			_dialog.open();
+		}
 	}
 
 	/**

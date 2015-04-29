@@ -19,7 +19,7 @@ import com.decade.framework.kit.DCLog;
  * @description: 重试请求
  * @author: Decade
  * @date: 2013-5-23
- * @preserve protected
+ * 
  */
 
 public class DCRetryHandler implements HttpRequestRetryHandler {

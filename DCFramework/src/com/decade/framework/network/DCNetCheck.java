@@ -8,7 +8,7 @@ import android.net.NetworkInfo;
  * @description:检测网络状态
  * @author: Decade
  * @date: 2013-5-21
- * @preserve protected
+ * 
  */
 public class DCNetCheck {
 

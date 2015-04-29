@@ -9,7 +9,7 @@ import java.util.Date;
  * @description:
  * @author: Decade
  * @date: 2013-5-31
- * @preserve protected
+ * 
  */
 public class DCDateUtils {
 

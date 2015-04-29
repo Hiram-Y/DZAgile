@@ -4,7 +4,7 @@ package com.decade.framework;
  * @description: 发送数据到指定控件定义
  * @author: Decade
  * @date: 2013-5-17
- * @preserve protected
+ * 
  */
 public class DCSendDataDefine {
 	public static final int SEND_TO_ACTIVITY=1;

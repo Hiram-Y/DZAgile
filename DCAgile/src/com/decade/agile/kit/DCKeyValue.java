@@ -12,7 +12,7 @@ import com.decade.framework.kit.DCLog;
  * @description: 一个简单的key-value存取类，对SharePreference进行了封装。(From AndroidKit)
  * @author: Decade
  * @date: 2013-5-24
- * @preserve protected
+ * 
  */
 
 public class DCKeyValue {

@@ -39,17 +39,17 @@ public abstract class DCAgileView extends DCBaseView implements DCiAsyncTaskCall
 	
 
 	@Override
-	public void closeTopLoadView() {
+	public void closeTopLoadView(int requestCode) {
 		closeLoading();
 	}
 
 	@Override
-	public void openTopLoadView() {
+	public void openTopLoadView(int requestCode) {
 		openLoading();
 	}
 
 	@Override
-	public void onJsonPaserError(String message) {
+	public void onJsonPaserError(String message,int requestCode) {
 		if(DCBuild.getDebugMode()){
 			DCRectToast.showToastLong(getContext(), "数据解析异常!"+ message,ToastTheme.ERROR);
 
@@ -59,12 +59,12 @@ public abstract class DCAgileView extends DCBaseView implements DCiAsyncTaskCall
 	}
 
 	@Override
-	public void onNetDisconnected() {
+	public void onNetDisconnected(int requestCode) {
 		DCRectToast.showToastShort(getContext(), "网络连接异常!",ToastTheme.WARNING);
 	}
 
 	@Override
-	public void onServerResponseError(String message) {
+	public void onServerResponseError(String message,int requestCode) {
 		if(DCBuild.getDebugMode()){
 			DCRectToast.showToastLong(getContext(), "请求异常!"+message,ToastTheme.ERROR);
 

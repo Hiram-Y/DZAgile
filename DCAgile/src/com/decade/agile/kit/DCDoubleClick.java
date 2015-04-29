@@ -7,7 +7,7 @@ import android.widget.Toast;
  * @description:  双击抽象类。(From AndroidKit)
  * @author: Decade
  * @date: 2013-5-24
- * @preserve protected
+ * 
  */
 public abstract class DCDoubleClick {
 	protected Context mContext;

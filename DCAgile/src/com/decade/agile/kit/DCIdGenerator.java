@@ -4,7 +4,7 @@ package com.decade.agile.kit;
  * @description: 
  * @author: Decade
  * @date: 2013-5-24
- * @preserve protected
+ * 
  */
 public interface DCIdGenerator<T> {
 	/**

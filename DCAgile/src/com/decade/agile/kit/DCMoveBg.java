@@ -7,7 +7,7 @@ import android.view.animation.TranslateAnimation;
  * @description: 移动背景
  * @author: Decade
  * @date: 2013-6-26
- * @preserve protected
+ * 
  */
 public class DCMoveBg {
 	

@@ -31,6 +31,8 @@ public abstract class DCBaseDialogView extends DCDialog {
 				null);
 		LinearLayout top_layout = (LinearLayout) _baseView
 				.findViewById(R.id.base_dialog_top_layout);
+		View line_lat = (View) _baseView
+				.findViewById(R.id.base_dialog_line_lat);
 		LinearLayout center_layout = (LinearLayout) _baseView
 				.findViewById(R.id.base_dialog_center_layout);
 		LinearLayout bottom_layout = (LinearLayout) _baseView
@@ -48,12 +50,13 @@ public abstract class DCBaseDialogView extends DCDialog {
 		if (params.getBottomViewBgResId() != 0) {
 			bottom_layout.setBackgroundResource(params.getBottomViewBgResId());
 		}
-
+		if (params.getLineColor() != 0) {
+			line_lat.setBackgroundColor(params.getLineColor());
+		}
 		addToTopView(top_layout);
 		addToCenterView(center_layout);
 		addToBottomView(bottom_layout);
 		setContentView(_baseView);
-		setDialogSize(getDialogWidth(),getDialogHeight());
 		return _baseView;
 	}
 
@@ -61,29 +64,35 @@ public abstract class DCBaseDialogView extends DCDialog {
 	 * 设置对话框的大小
 	 * 
 	 * @param width
-	 *            为0时，设置默认值， 默认值为屏幕宽度的 十三分之一
 	 * @param height
-	 *            为0时 设置默认值 ，默认值根据布局大小变化
 	 */
-	public void setDialogSize(int width,int height) {
+	public void setDialogSize(int width, int height) {
 		Window w = getWindow();
 		WindowManager.LayoutParams wl = w.getAttributes();
-		if(width != 0){
-			wl.width = width;
-		}else {
-			wl.width = getDialogWidth();
-		}
-		if (height != 0) {
-			wl.height = height;
-		}
+		wl.width = width;
+		wl.height = height;
 		w.setAttributes(wl);
 	}
 
-	protected int getDialogWidth() {
-		return DCApplication.getApp().getWorkSpaceWidth() / 13 * 11;
+	public void setDialogHeight(int height) {
+		Window w = getWindow();
+		WindowManager.LayoutParams wl = w.getAttributes();
+		wl.height = height;
+		w.setAttributes(wl);
 	}
 
-	protected int getDialogHeight() {
+	public void setDialogWidth(int width) {
+		Window w = getWindow();
+		WindowManager.LayoutParams wl = w.getAttributes();
+		wl.width = width;
+		w.setAttributes(wl);
+	}
+
+	public int getDefaultDialogWidth() {
+		return DCApplication.getApp().getWorkSpaceWidth() - 60;
+	}
+
+	public int getDefaultDialogHeight() {
 		return DCApplication.getApp().getWorkSpaceHeight() / 4 * 1;
 	}
 

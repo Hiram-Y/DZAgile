@@ -30,7 +30,7 @@ public class DCStripDialog extends DCDialog {
 		 create(params);
 	}
 
-	public static DCiDialog getInstance(Context context,
+	public synchronized static  DCiDialog getInstance(Context context,
 			DCBaseDialogParams params) {
 		if (_dialog == null) {
 			return new DCStripDialog(context, params);

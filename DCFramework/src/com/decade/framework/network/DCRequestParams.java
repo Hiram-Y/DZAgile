@@ -50,7 +50,7 @@ import org.apache.http.message.BasicNameValuePair;
  * params.put("profile_picture3", new ByteArrayInputStream(someBytes)); // Upload some bytes
  *
  * </pre>
- * @preserve protected
+ * 
  */
 public class DCRequestParams {
     private static String ENCODING = "UTF-8";
@@ -299,7 +299,7 @@ public class DCRequestParams {
     }
     
     /**
-     * @preserve protected
+     * 
      */
     private static class FileWrapper {
         public InputStream inputStream;

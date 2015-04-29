@@ -20,29 +20,29 @@ import com.decade.framework.async.DCiResponse;
 public class DCAgileActivity extends DCActivity implements DCiAsyncTaskCallback {
 
 	@Override
-	public void onJsonPaserError(String message) {
-		DCRectToast.showToastShort(this, "数据解析异常!",ToastTheme.ERROR);
+	public void onJsonPaserError(String message, int requestCode) {
+		DCRectToast.showToastShort(this, "数据解析异常!", ToastTheme.ERROR);
 
 	}
 
 	@Override
-	public void onNetDisconnected() {
-		DCRectToast.showToastShort(this, "网络异常!",ToastTheme.WARNING);
+	public void onNetDisconnected(int requestCode) {
+		DCRectToast.showToastShort(this, "网络异常!", ToastTheme.WARNING);
 	}
 
 	@Override
-	public void onServerResponseError(String message) {
-		DCRectToast.showToastShort(this, "请求无响应!",ToastTheme.ERROR);
+	public void onServerResponseError(String message, int requestCode) {
+		DCRectToast.showToastShort(this, "请求无响应!", ToastTheme.ERROR);
 
 	}
 
 	@Override
-	public void openTopLoadView() {
+	public void openTopLoadView(int requestCode) {
 		openLoading();
 	}
 
 	@Override
-	public void closeTopLoadView() {
+	public void closeTopLoadView(int requestCode) {
 		closeLoading();
 	}
 
@@ -50,7 +50,7 @@ public class DCAgileActivity extends DCActivity implements DCiAsyncTaskCallback 
 	public void onComplete(DCiResponse response, int requestCode) {
 
 	}
-	
+
 	@Override
 	protected DCiTopView getTopViewLoader() {
 		return new DCCommonTopView(this,
@@ -89,7 +89,5 @@ public class DCAgileActivity extends DCActivity implements DCiAsyncTaskCallback 
 		super.startActivityForResult(intent, requestCode);
 		startTransitionAnim();
 	}
-	
-	
 
 }

@@ -7,7 +7,7 @@ import android.content.Context;
  * @description: 双击退出Activity的类。(From AndroidKit)
  * @author: Decade
  * @date: 2013-5-24
- * @preserve protected
+ * 
  */
 public class DCExitDoubleClick extends DCDoubleClick {
 

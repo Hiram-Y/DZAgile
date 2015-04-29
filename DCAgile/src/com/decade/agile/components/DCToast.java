@@ -7,7 +7,7 @@ import android.widget.Toast;
  * @description:
  * @author: Decade
  * @date: 2013-5-6
- * @preserve protected
+ * 
  */
 public class DCToast {
 	private static Toast _toast;

@@ -21,8 +21,12 @@ import com.decade.agile.R;
 
 public class DCCommonDialogView extends DCBaseDialogView {
 
-	public TextView prompt_content;
-	public DCPromptDialogParams _params;
+	protected TextView prompt_content_tv;
+	protected TextView prompt_title_tv;
+	protected TextView prompt_left_bt;
+	protected TextView prompt_center_bt;
+	protected TextView prompt_right_bt;
+	protected DCPromptDialogParams _params;
 
 	public DCCommonDialogView(Context context, DCPromptDialogParams params) {
 		super(context);
@@ -33,27 +37,31 @@ public class DCCommonDialogView extends DCBaseDialogView {
 	protected void addToCenterView(LinearLayout layout) {
 		View center = View.inflate(_context, R.layout.agile_common_center_view,
 				layout);
-
-		prompt_content = (TextView) center.findViewById(R.id.prompt_content);
+		prompt_content_tv = (TextView) center.findViewById(R.id.prompt_content);
+		if (_params.getContentSize() != 0) {
+			prompt_content_tv.setTextSize(_params.getContentSize());
+		}
+		if (_params.getContentColor() != 0) {
+			prompt_content_tv.setTextColor(_params.getContentColor());
+		}
 		if (!TextUtils.isEmpty(_params.getContent())) {
 			if (_params.getContent().contains("\n")) {
-				prompt_content.setText(_params.getContent());
-
+				prompt_content_tv.setText(_params.getContent());
 			} else if (_params.getContent().contains("<br>")) {
-				prompt_content.setText(Html.fromHtml(_params.getContent()));
+				prompt_content_tv.setText(Html.fromHtml(_params.getContent()));
 			} else {
-				prompt_content.setText(_params.getContent());
+				prompt_content_tv.setText(_params.getContent());
 			}
 			if (_params.getContent().length() < 30) {
 				LayoutParams params = new LayoutParams(
 						LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				params.gravity = Gravity.CENTER_VERTICAL;
-				prompt_content.setLayoutParams(params);
+				prompt_content_tv.setLayoutParams(params);
 			}
 		}
 	}
 
-	private void setButton(String str, final Button button) {
+	private void setButton(String str, final TextView button) {
 		if (!TextUtils.isEmpty(str)) {
 			button.setVisibility(View.VISIBLE);
 			button.setText(str);
@@ -81,31 +89,31 @@ public class DCCommonDialogView extends DCBaseDialogView {
 		}
 	}
 
-	public Dialog getDialog() {
-		return this;
-	}
-
-	public TextView getContentTextView() {
-		return prompt_content;
-	}
-
 	/**
 	 * 此方法可用来更新对话框内容提示
 	 */
 	@Override
 	public void refresh() {
-		prompt_content.setText(Html.fromHtml(_params.getContent()));
+		prompt_content_tv.setText(Html.fromHtml(_params.getContent()));
 	}
 
 	@Override
 	protected void addToTopView(LinearLayout layout) {
 		View top = View.inflate(_context, R.layout.agile_common_top_view,
 				layout);
-		TextView prompt_title = (TextView) top.findViewById(R.id.prompt_title);
+		prompt_title_tv = (TextView) top.findViewById(R.id.prompt_title);
 		if (!TextUtils.isEmpty(_params.getTitle())) {
-			prompt_title.setText(_params.getTitle());
+			prompt_title_tv.setText(_params.getTitle());
 		} else {
 			layout.setVisibility(View.GONE);
+		}
+
+		if (_params.getTitleSize() != 0) {
+			prompt_title_tv.setTextSize(_params.getTitleSize());
+		}
+
+		if (_params.getTitleColor() != 0) {
+			prompt_title_tv.setTextColor(_params.getTitleColor());
 		}
 	}
 
@@ -113,12 +121,10 @@ public class DCCommonDialogView extends DCBaseDialogView {
 	protected void addToBottomView(LinearLayout layout) {
 		View bottom = View.inflate(_context, R.layout.agile_common_bottom_view,
 				layout);
-		Button prompt_left_bt = (Button) bottom
-				.findViewById(R.id.prompt_left_bt);
-		Button prompt_center_bt = (Button) bottom
+		prompt_left_bt = (TextView) bottom.findViewById(R.id.prompt_left_bt);
+		prompt_center_bt = (TextView) bottom
 				.findViewById(R.id.prompt_center_bt);
-		Button prompt_right_bt = (Button) bottom
-				.findViewById(R.id.prompt_right_bt);
+		prompt_right_bt = (TextView) bottom.findViewById(R.id.prompt_right_bt);
 
 		if (_params.getBtnTextSize() != 0) {
 			prompt_left_bt.setTextSize(_params.getBtnTextSize());
@@ -171,5 +177,30 @@ public class DCCommonDialogView extends DCBaseDialogView {
 	public DCBaseDialogParams getParams() {
 		return _params;
 	}
+	
+	public Dialog getDialog() {
+		return this;
+	}
+
+	public TextView getContentTextView() {
+		return prompt_content_tv;
+	}
+
+	public TextView getTitleTextView() {
+		return prompt_title_tv;
+	}
+
+	public TextView getLeftButton() {
+		return prompt_left_bt;
+	}
+
+	public TextView getCenterButton() {
+		return prompt_center_bt;
+	}
+
+	public TextView getRightButton() {
+		return prompt_right_bt;
+	}
+
 
 }

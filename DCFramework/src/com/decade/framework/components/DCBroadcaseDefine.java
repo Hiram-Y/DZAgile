@@ -4,7 +4,7 @@ package com.decade.framework.components;
  * @description: 
  * @author: Decade
  * @date: 2014-2-20
- * @preserve protected
+ * 
  */
 public class DCBroadcaseDefine {
 	public static final String BROADCASE_DISPENSE_MESSAGE = "com.broadcase.dispense"; 

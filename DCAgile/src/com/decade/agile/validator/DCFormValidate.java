@@ -8,7 +8,7 @@ import android.widget.EditText;
  * @description: 表单验证 工具类
  * @author: Decade
  * @date: 2013-9-12
- * @preserve protected
+ * 
  */
 public class DCFormValidate {
 	private Context _context;
@@ -43,8 +43,8 @@ public class DCFormValidate {
 	 * @param editText
 	 * @param promptResId
 	 */
-	public void addNotEmptyValidator(EditText editText, int promptResId) {
-		DCValidate validate = new DCValidate(editText);
+	public void addNotEmptyValidator(EditText edit, int promptResId) {
+		DCValidate validate = new DCValidate(edit);
 		DCNotEmptyValidator validator = new DCNotEmptyValidator(_context,
 				promptResId);
 		validate.addValidator(validator);

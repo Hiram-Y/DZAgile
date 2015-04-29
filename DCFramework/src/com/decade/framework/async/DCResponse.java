@@ -6,7 +6,7 @@ package com.decade.framework.async;
  * @description: 抽象数据模型
  * @author: Decade
  * @date: 2013-5-17
- * @preserve protected
+ * 
  */
 public abstract class DCResponse implements DCiResponse{
 

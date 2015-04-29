@@ -33,7 +33,7 @@ import com.decade.agile.pulltorefresh.PullToRefreshBase.Orientation;
 
 public class FlipLoadingLayout extends LoadingLayout {
 
-	static final int FLIP_ANIMATION_DURATION = 150;
+	static final int FLIP_ANIMATION_DURATION = 150; 
 
 	private final Animation mRotateAnimation, mResetRotateAnimation;
 

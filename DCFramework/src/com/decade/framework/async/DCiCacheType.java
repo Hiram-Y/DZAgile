@@ -8,7 +8,7 @@ import com.decade.framework.network.DCRequestParams;
  * @description:
  * @author: Decade
  * @date: 2013-5-31
- * @preserve protected
+ * 
  */
 public interface DCiCacheType {
 	public DCiResponse processCache( DCBaseAsyncTask<?, ?> ayncTask, String url,

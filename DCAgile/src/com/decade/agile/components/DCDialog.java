@@ -34,7 +34,7 @@ public abstract class DCDialog extends Dialog implements DCiDialog {
 	 * @description: 对话框按钮点击回调事件
 	 * @author: Decade
 	 * @date: 2013-9-16
-	 * @preserve protected
+	 * 
 	 */
 	public interface PromptBtnCallback{
 		public void onClick(DCiDialog dialog, View view,

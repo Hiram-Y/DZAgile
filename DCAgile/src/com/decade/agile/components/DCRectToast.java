@@ -9,7 +9,7 @@ import com.decade.agile.R;
  * @description:
  * @author: Decade
  * @date: 2013-5-6
- * @preserve protected
+ * 
  */
 public class DCRectToast {
 	private static Toast _toast;

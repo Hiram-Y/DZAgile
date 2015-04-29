@@ -14,7 +14,7 @@ import com.decade.framework.network.DCNetWorkeUtility;
  * @description: 文件上传
  * @author: Decade
  * @date: 2013-5-6
- * @preserve protected
+ * 
  */
 public abstract class DCFileAsyncTask<Params, Progress> extends
 		DCBaseAsyncTask<Params, Progress> {

@@ -9,7 +9,7 @@ import com.decade.framework.kit.DCSDCardOperate;
  * @description: json缓存处理类
  * @author: Decade
  * @date: 2013-9-16
- * @preserve protected
+ * 
  */
 public class DCJsonFileCache extends DCBaseJsonFileCache {
 	private static DCJsonFileCache jsonFileCache = null;

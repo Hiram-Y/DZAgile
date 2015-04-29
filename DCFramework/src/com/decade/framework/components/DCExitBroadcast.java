@@ -10,7 +10,7 @@ import android.content.IntentFilter;
  * @description:
  * @author: Decade
  * @date: 2013-5-7
- * @preserve protected
+ * 
  */
 public class DCExitBroadcast extends BroadcastReceiver {
 

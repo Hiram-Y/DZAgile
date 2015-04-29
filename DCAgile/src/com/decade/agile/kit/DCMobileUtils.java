@@ -14,7 +14,7 @@ import android.text.TextUtils;
  * @description:
  * @author: Decade
  * @date: 2013-6-14
- * @preserve protected
+ * 
  */
 public class DCMobileUtils {
 

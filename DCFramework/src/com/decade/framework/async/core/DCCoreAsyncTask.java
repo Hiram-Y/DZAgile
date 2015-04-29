@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @description: 修改了线程池属性，让并发线程按顺序执行 
  * @author: Decade
  * @date: 2013-9-16
- * @preserve protected
+ * 
  */
 public abstract class DCCoreAsyncTask<Params, Progress, Result> {
     private static final String LOG_TAG = "AsyncTask";

@@ -23,14 +23,7 @@ import com.decade.framework.network.DCRequestParams;
 public abstract class DCBaseAsyncTask<Params, Progress> extends
 		DCCoreAsyncTask<Params, Object, DCiResponse> {
 	private int _statusCode = DCNetStatusDefine.S_DEFAULT;
-
-	/**
-	 * @preserve
-	 */
 	protected static final int HTTP_POST = 10;
-	/**
-	 * @preserve
-	 */
 	protected static final int HTTP_GET = 11;
 	private DCAsyncTaskParams _taskParams;
 	private Context _context;
@@ -219,32 +212,33 @@ public abstract class DCBaseAsyncTask<Params, Progress> extends
 
 	public void openTopLoadView() {
 		if (getEvent() != null) {
-			getEvent().openTopLoadView();
+			getEvent().openTopLoadView(_taskParams.getRequestCode());
 		}
 	}
 
 	public void closeTopLoadView() {
 
 		if (getEvent() != null) {
-			getEvent().closeTopLoadView();
+			getEvent().closeTopLoadView(_taskParams.getRequestCode());
 		}
 	}
 
 	protected void onServerRequestError(String message) {
 		if (getEvent() != null) {
-			getEvent().onServerResponseError(message);
+			getEvent().onServerResponseError(message,
+					_taskParams.getRequestCode());
 		}
 	}
 
 	protected void onJsonPaserError(String message) {
 		if (getEvent() != null) {
-			getEvent().onJsonPaserError(message);
+			getEvent().onJsonPaserError(message, _taskParams.getRequestCode());
 		}
 	}
 
 	protected void netDisconnected() {
 		if (getEvent() != null) {
-			getEvent().onNetDisconnected();
+			getEvent().onNetDisconnected(_taskParams.getRequestCode());
 		}
 	}
 

@@ -15,7 +15,7 @@ import com.decade.framework.kit.DCLog;
  * @description:
  * @author: Decade
  * @date: 2013-9-12
- * @preserve protected
+ * 
  */
 public class DCFilterWatcher implements TextWatcher {
 	private EditText _editText;

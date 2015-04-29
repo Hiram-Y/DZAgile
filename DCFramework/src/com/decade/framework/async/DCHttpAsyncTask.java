@@ -11,7 +11,7 @@ import com.decade.framework.network.DCRequestParams;
  * @description: Http请求发送数据
  * @author: Decade
  * @date: 2013-5-6
- * @preserve protected
+ * 
  */
 public abstract class DCHttpAsyncTask<Params, Progress> extends
 		DCBaseAsyncTask<Params, Progress> {

@@ -10,7 +10,7 @@ import com.decade.framework.network.DCNetCheck;
  * @description: 应用程序基类
  * @author: Decade
  * @date: 2013-5-17
- * @preserve protected
+ * 
  */
 
 public abstract class DCApplication extends Application {

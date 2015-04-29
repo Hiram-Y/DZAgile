@@ -12,7 +12,7 @@ import com.decade.agile.components.DCToast;
  * @description: 文字数量监听
  * @author: Decade
  * @date: 2013-6-14
- * @preserve protected
+ * 
  */
 public class DCAmountTextWatcher implements TextWatcher {
 	private CharSequence temp;

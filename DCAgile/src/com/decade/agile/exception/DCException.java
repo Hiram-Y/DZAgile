@@ -4,7 +4,7 @@ package com.decade.agile.exception;
  * @description: 
  * @author: Decade
  * @date: 2013-5-31
- * @preserve protected
+ * 
  */
 public class DCException extends Exception{
 	private static final long serialVersionUID = 1L;

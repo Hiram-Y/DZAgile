@@ -6,7 +6,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,34 +13,22 @@ import android.widget.TextView;
 import com.decade.agile.R;
 import com.decade.agile.components.DCPickDialogView.DCPickItem;
 
-public class DCPickDialogAdapter extends BaseAdapter {
+public class DCPickDialogAdapter extends DCListAdapter<DCPickItem> {
 
-	private Context _context;
-	private List<DCPickItem> _list;
 	private int _indicatorImageResId;
 
+	/**
+	 * @param context
+	 * @param list
+	 */
 	public DCPickDialogAdapter(Context context, List<DCPickItem> list) {
-		_context = context;
-		_list = list;
+		super(context, list);
 	}
 
-	@Override
-	public int getCount() {
-		return _list.size();
-	}
-
-	@Override
-	public Object getItem(int position) {
-		return null;
-	}
-
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
-
-	public DCPickItem getDateWhitPosition(int position) {
-		return _list.get(position);
+	public DCPickDialogAdapter(Context context, List<DCPickItem> list,
+			int indicatorImageResId) {
+		super(context, list);
+		_indicatorImageResId = indicatorImageResId;
 	}
 
 	/**
@@ -61,18 +48,17 @@ public class DCPickDialogAdapter extends BaseAdapter {
 			view = LayoutInflater.from(_context).inflate(
 					R.layout.agile_pick_dialog_item_view, null);
 			holder.img_imv = (ImageView) view
-					.findViewById(R.id.pick_item_img_imv);
-			holder.title_txv = (TextView) view
-					.findViewById(R.id.pick_item_title_txv);
+					.findViewById(R.id.pick_dialog_item_img_imv);
+			holder.title_tv = (TextView) view
+					.findViewById(R.id.pick_dialog_item_title_txv);
 			holder.flag_ckb = (CheckBox) view
-					.findViewById(R.id.pick_item_flag_ckb);
-			// holder.title.getPaint().setFakeBoldText(true);
+					.findViewById(R.id.pick_dialog_item_flag_ckb);
 			view.setTag(holder);
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
 		DCPickItem ss = _list.get(position);
-		holder.title_txv.setText(ss.getTitle());
+		holder.title_tv.setText(ss.getTitle());
 		if (ss.isSelected()) {
 			holder.flag_ckb.setChecked(true);
 		} else {
@@ -97,7 +83,7 @@ public class DCPickDialogAdapter extends BaseAdapter {
 
 	static class ViewHolder {
 		ImageView img_imv;
-		TextView title_txv;
+		TextView title_tv;
 		CheckBox flag_ckb;
 
 	}

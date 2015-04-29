@@ -8,8 +8,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.decade.agile.R;
+import com.decade.agile.components.DCLazyViewPager.OnPageChangeListener;
 import com.decade.framework.DCApplication;
 
 /**
@@ -38,7 +37,7 @@ public class DCTitleStillViewPager extends LinearLayout implements
 	private LayoutParams tabNameTextParams;
 	private RelativeLayout.LayoutParams tabMsgCountTextParams;
 	private Context mContext;
-	private ViewPager mPager;// 页卡内容
+	private DCLazyViewPager mPager;// 页卡内容
 	private ImageView cursor;// 动画图片
 	private int offset = 0;// 动画图片偏移量
 	private int currIndex = 0;// 当前页卡编号
@@ -236,9 +235,8 @@ public class DCTitleStillViewPager extends LinearLayout implements
 	 * 初始化ViewPager
 	 */
 	private void initViewPager() {
-		mPager = (ViewPager) mrootLayout.findViewById(R.id.vPager);
+		mPager = (DCLazyViewPager) mrootLayout.findViewById(R.id.vPager);
 		mPager.setOnPageChangeListener(new MyOnPageChangeListener());
-		mPager.setOffscreenPageLimit(1);
 	}
 
 	/**
@@ -251,6 +249,11 @@ public class DCTitleStillViewPager extends LinearLayout implements
 		initImageView();
 		initViewPager();
 		initView();
+	}
+	
+	
+	public DCLazyViewPager getPager(){
+		return mPager;
 	}
 
 	/**

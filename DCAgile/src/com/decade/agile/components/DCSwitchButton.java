@@ -45,12 +45,11 @@ public class DCSwitchButton extends CheckBox {
 	private int mTouchSlop;
 	private final int MAX_ALPHA = 255;
 	private int mAlpha = MAX_ALPHA;
-	private boolean mChecked = false;
+	private boolean mChecked = true;
 	private boolean mBroadcasting;
 	private boolean mTurningOn;
 	private PerformClick mPerformClick;
 	private OnCheckedChangeListener mOnCheckedChangeListener;
-	private OnCheckedChangeListener mOnCheckedChangeWidgetListener;
 	private boolean mAnimating;
 	private final float VELOCITY = 350;
 	private float mVelocity;
@@ -71,10 +70,10 @@ public class DCSwitchButton extends CheckBox {
 		super(context, attrs, defStyle);
 		TypedArray a = context.obtainStyledAttributes(attrs,
 				R.styleable.SwitchButton);
-		initView(context,a);
+		initView(context, a);
 	}
 
-	private void initView(Context context,TypedArray typedArray) {
+	private void initView(Context context, TypedArray typedArray) {
 		mPaint = new Paint();
 		mPaint.setColor(Color.WHITE);
 		Resources resources = context.getResources();
@@ -86,13 +85,15 @@ public class DCSwitchButton extends CheckBox {
 
 		// get Bitmap
 		int switch_bg = typedArray.getResourceId(
-				R.styleable.SwitchButton_switchBackground, R.drawable.agile_bottom);
+				R.styleable.SwitchButton_switchBackground,
+				R.drawable.agile_bottom);
 		mBottom = BitmapFactory.decodeResource(resources, switch_bg);
 		mBtnPressed = BitmapFactory.decodeResource(resources,
 				R.drawable.agile_btn_pressed);
 		mBtnNormal = BitmapFactory.decodeResource(resources,
 				R.drawable.agile_btn_unpressed);
-		mFrame = BitmapFactory.decodeResource(resources, R.drawable.agile_frame);
+		mFrame = BitmapFactory
+				.decodeResource(resources, R.drawable.agile_frame);
 		mMask = BitmapFactory.decodeResource(resources, R.drawable.agile_mask);
 		mCurBtnPic = mBtnNormal;
 
@@ -171,11 +172,7 @@ public class DCSwitchButton extends CheckBox {
 			mBroadcasting = true;
 			if (mOnCheckedChangeListener != null) {
 				mOnCheckedChangeListener.onCheckedChanged(DCSwitchButton.this,
-						mChecked);
-			}
-			if (mOnCheckedChangeWidgetListener != null) {
-				mOnCheckedChangeWidgetListener.onCheckedChanged(
-						DCSwitchButton.this, mChecked);
+						!mChecked);
 			}
 
 			mBroadcasting = false;
@@ -191,18 +188,6 @@ public class DCSwitchButton extends CheckBox {
 	 */
 	public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
 		mOnCheckedChangeListener = listener;
-	}
-
-	/**
-	 * Register a callback to be invoked when the checked state of this button
-	 * changes. This callback is used for internal purpose only.
-	 * 
-	 * @param listener
-	 *            the callback to call on checked state change
-	 * @hide
-	 */
-	void setOnCheckedChangeWidgetListener(OnCheckedChangeListener listener) {
-		mOnCheckedChangeWidgetListener = listener;
 	}
 
 	@Override

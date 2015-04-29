@@ -20,6 +20,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
 
 import com.decade.framework.annotation.DCViewProcessor;
 
@@ -27,7 +28,7 @@ import com.decade.framework.annotation.DCViewProcessor;
  * @description 所有子view的父类，此基类负责和主Activity进行交互。
  * @author Decade
  * @date 2013-4-23
- * @preserve protected
+ * 
  */
 
 public abstract class DCBaseView {
@@ -544,6 +545,10 @@ public abstract class DCBaseView {
 	protected final View getBottomView() {
 		return _parent.getBottomView();
 	}
+	
+	public TextView getUnreadView() {
+		return _parent.getUnreadView();
+	}
 
 	public final Context getContext() {
 		return _parent;
@@ -688,12 +693,12 @@ public abstract class DCBaseView {
 		return id;
 	}
 
-	public final Drawable getDrawable(int id) {
-		return _parent.getDrawable(id);
+	public final Drawable getDrawableById(int id) {
+		return _parent.getDrawableById(id);
 	}
 
-	public final int getColor(int resId) {
-		return _parent.getColor(resId);
+	public final int getColorById(int resId) {
+		return _parent.getColorById(resId);
 	}
 
 	public final Resources getResources() {
@@ -713,8 +718,8 @@ public abstract class DCBaseView {
 		return getResources().getDimensionPixelOffset(resId);
 	}
 
-	public final float getDimension(int id) {
-		return _parent.getDimension(id);
+	public final float getDimensionById(int id) {
+		return _parent.getDimensionById(id);
 	}
 
 	protected final LayoutInflater getInflater() {

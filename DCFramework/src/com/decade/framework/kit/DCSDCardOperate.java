@@ -12,7 +12,7 @@ import android.os.StatFs;
 
 /**
  * @author Decade
- * @preserve protected
+ * 
  */
 public class DCSDCardOperate {
 	private static final int MB = 1024 * 1024;

@@ -17,7 +17,7 @@ import com.decade.framework.network.DCRequestParams;
  * @description: 缓存策略，不适用缓存
  * @author: Decade
  * @date: 2013-5-31
- * @preserve protected
+ * 
  */
 public class DCUseCache implements DCiCacheType {
 

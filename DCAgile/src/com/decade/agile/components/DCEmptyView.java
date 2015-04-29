@@ -52,10 +52,10 @@ public class DCEmptyView {
 				LayoutParams.WRAP_CONTENT));
 		emptyView.setText(prompt);
 		emptyView.setTextColor(Color.GRAY);
-		emptyView.setTextSize(16);
+		emptyView.setTextSize(14);
 		emptyView.setCompoundDrawablesWithIntrinsicBounds(
 				R.drawable.agile_load_list_error_icon, 0, 0, 0);
-		emptyView.setCompoundDrawablePadding(20);
+		emptyView.setCompoundDrawablePadding(10);
 		layout.addView(emptyView);
 		if (l != null) {
 			layout.setOnClickListener(l);

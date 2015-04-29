@@ -8,7 +8,7 @@ import android.widget.EditText;
  * @description: 输入键盘操作类
  * @author: Decade
  * @date: 2013-7-2
- * @preserve protected
+ * 
  */
 public class DCKeyBoard {
 	

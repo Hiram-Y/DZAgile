@@ -35,7 +35,6 @@ import com.decade.framework.kit.DCLog;
  * @description: 注解处理类 (Modification AndroidKit)
  * @author: Decade
  * @date: 2013-5-28
- * @preserve all
  */
 public class DCViewProcessor {
 

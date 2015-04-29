@@ -21,7 +21,7 @@ import com.decade.framework.kit.DCLog;
  * @description 使用框架的Activity 必须继承此基础类，此基类负责和子View进行交互。
  * @author Decade
  * @date 2013-4-23
- * @preserve protected
+ * 
  */
 public abstract class DCBaseViewActivity extends DCActivity {
 	private DCBaseView _curryView;

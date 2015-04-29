@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 
-    <!-- px转sp -->
-    <dimen name="thirty_px2sp">20sp</dimen>
-    <dimen name="twenty_eight_px2sp">18.66sp</dimen>
-    <dimen name="twenty_six_px2sp">17.33sp</dimen>
-    <dimen name="twenty_four_px2sp">16sp</dimen>
-    <dimen name="twenty_two_px2sp">14.66sp</dimen>
-    <dimen name="twenty_px2sp">13.33sp</dimen>
-    <dimen name="eighteen_px2sp">12sp</dimen>
-    <dimen name="seventeen_px2sp">11.33sp</dimen>
-    <dimen name="sixteen_px2sp">10.66sp</dimen>
-    
-    <dimen name="sp_30">30sp</dimen>
-    <dimen name="sp_28">28sp</dimen>
-    <dimen name="sp_26">26sp</dimen>
-    <dimen name="sp_24">24sp</dimen>
-    <dimen name="sp_22">22sp</dimen>
-    <dimen name="sp_20">20sp</dimen>
-    <dimen name="sp_18">18sp</dimen>
-    <dimen name="sp_17">17sp</dimen>
-    <dimen name="sp_16">16sp</dimen>
-    <dimen name="sp_15">15sp</dimen>
-    <dimen name="sp_14">14sp</dimen>
-    <dimen name="sp_13">13sp</dimen>
-    <dimen name="sp_12">12sp</dimen>
-    <dimen name="sp_10">10sp</dimen>
-    <dimen name="sp_8">8sp</dimen>
+
         
     <!-- 自定义 -->
     <dimen name="hint_y_offset">64dip</dimen>
@@ -49,8 +24,5 @@
     <dimen name="header_footer_left_right_padding">24dp</dimen>
     <dimen name="header_footer_top_bottom_padding">12dp</dimen>
 
-    <!-- 选择对话框 -->
-    <dimen name="agile_pick_dialog_item_padding">2dp</dimen>
-    <dimen name="agile_common_dialog_bottom_btn_padding">5dp</dimen>
     
 </resources>

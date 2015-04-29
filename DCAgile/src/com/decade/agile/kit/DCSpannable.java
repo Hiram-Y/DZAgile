@@ -9,7 +9,7 @@ import android.text.style.ForegroundColorSpan;
  * @description: 文字分块处理
  * @author: Decade
  * @date: 2013-9-16
- * @preserve protected
+ * 
  */
 public class DCSpannable {
 

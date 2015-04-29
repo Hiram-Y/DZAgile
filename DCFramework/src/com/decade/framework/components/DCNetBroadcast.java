@@ -14,20 +14,19 @@ import com.decade.framework.DCApplication;
 
 /**
  * @author Decade 侦听网络状态的变化
- * @preserve protected
+ * 
  */
 public class DCNetBroadcast extends BroadcastReceiver {
-	private DCiNetStateCallback mNetStateCallback = null;
-	private static DCNetBroadcast _receiver;
+	private static DCiNetStateCallback _netStateCallback = null;
+	private static DCNetBroadcast _receiver = new DCNetBroadcast();
 	private static IntentFilter _intentFilter;
 
 	public static void registerReceiver(Context context) {
-		_receiver = new DCNetBroadcast();
 		setReceiver(context);
 	}
 	
 	public static void registerReceiver(Context context,DCiNetStateCallback netStateCallback) {
-		_receiver = new DCNetBroadcast(netStateCallback);
+		_netStateCallback = netStateCallback;
 		setReceiver(context);
 	}
 
@@ -35,13 +34,6 @@ public class DCNetBroadcast extends BroadcastReceiver {
 		if(_receiver!=null){
 			context.unregisterReceiver(_receiver);
 		}
-	}
-	
-	public DCNetBroadcast() {
-	}
-
-	public DCNetBroadcast(DCiNetStateCallback netStateCallback) {
-		mNetStateCallback = netStateCallback;
 	}
 
 	private static void setReceiver(Context context) {
@@ -59,19 +51,19 @@ public class DCNetBroadcast extends BroadcastReceiver {
 				// 判断当前网络是否已经连接
 				if (info.getState() == NetworkInfo.State.CONNECTED) {
 					DCApplication.getApp().setNetStatus(true);
-					if (mNetStateCallback != null) {
-						mNetStateCallback.connected();
+					if (_netStateCallback != null) {
+						_netStateCallback.connected();
 					}
 				} else {
 					DCApplication.getApp().setNetStatus(false);
-					if (mNetStateCallback != null) {
-						mNetStateCallback.disconnected();
+					if (_netStateCallback != null) {
+						_netStateCallback.disconnected();
 					}
 				}
 			} else {
 				DCApplication.getApp().setNetStatus(false);
-				if (mNetStateCallback != null) {
-					mNetStateCallback.disconnected();
+				if (_netStateCallback != null) {
+					_netStateCallback.disconnected();
 				}
 			}
 		}
@@ -81,11 +73,10 @@ public class DCNetBroadcast extends BroadcastReceiver {
 	 * @description:
 	 * @author: Decade
 	 * @date: 2013-9-16
-	 * @preserve protected
+	 * 
 	 */
 	public interface DCiNetStateCallback {
 		public void connected();
-
 		public void disconnected();
 	}
 }

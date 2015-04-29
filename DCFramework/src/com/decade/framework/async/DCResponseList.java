@@ -7,7 +7,7 @@ import java.util.List;
  * @description: 抽象模型集
  * @author: Decade
  * @date: 2013-9-16
- * @preserve protected
+ * 
  */
 public abstract class DCResponseList<T> extends DCResponse{
 	private List<T> _list = new ArrayList<T>();

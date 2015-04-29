@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * @description: 字符串处理工具类
  * @author: Decade
  * @date: 2013-6-14
- * @preserve protected
+ * 
  */
 public class DCStringUtils {
 
@@ -96,10 +96,11 @@ public class DCStringUtils {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 判断是否以0开头的数字
-	 * @param str 
+	 * 
+	 * @param str
 	 * @return true:符合规则，false：不符合
 	 */
 	public static boolean isStartZeroNumeric(String str) {
@@ -111,28 +112,47 @@ public class DCStringUtils {
 		}
 		return false;
 	}
+
 	/**
 	 * 车牌号校验
-	 * @param str 
+	 * 
+	 * @param str
 	 * @return true:符合规则，false：不符合
 	 */
 	public static boolean validateCarNo(String str) {
 		String newStr = trim(str);
-		Pattern pattern = Pattern.compile("^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$");
+		Pattern pattern = Pattern
+				.compile("^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$");
 		Matcher matcher = pattern.matcher(newStr);
 		if (matcher.matches()) {
 			return true;
 		}
 		return false;
 	}
-	
+
+	/**
+	 * 从短信内容获取6位纯数字验证码
+	 * 
+	 * @param smsBody
+	 * @return
+	 */
+	public static String getVerifyCodeFromSms(String smsBody) {
+		Pattern pattern = Pattern.compile("\\d{6}");
+		Matcher matcher = pattern.matcher(smsBody);
+		if (matcher.find()) {
+			return matcher.group();
+		}
+		return null;
+	}
+
 	/**
 	 * 过滤字符串前面的零
+	 * 
 	 * @param str
 	 * @return
 	 */
-	public static String filterFirstZero(String str){
-		if(!str.contains(".")){
+	public static String filterFirstZero(String str) {
+		if (!str.contains(".")) {
 			return str.replaceFirst("^0*", "");
 		}
 		return str;
@@ -186,6 +206,47 @@ public class DCStringUtils {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * 校验银行卡卡号
+	 * 
+	 * @param cardId
+	 * @return
+	 */
+	public static boolean checkBankCard(String cardId) {
+		char bit = getBankCardCheckCode(cardId
+				.substring(0, cardId.length() - 1));
+		if (bit == 'N') {
+			return false;
+		}
+		return cardId.charAt(cardId.length() - 1) == bit;
+	}
+
+	/**
+	 * 从不含校验位的银行卡卡号采用 Luhm 校验算法获得校验位
+	 * 
+	 * @param nonCheckCodeCardId
+	 * @return
+	 */
+	private static char getBankCardCheckCode(String nonCheckCodeCardId) {
+		if (nonCheckCodeCardId == null
+				|| nonCheckCodeCardId.trim().length() == 0
+				|| !nonCheckCodeCardId.matches("\\d+")) {
+			// 如果传的不是数据返回N
+			return 'N';
+		}
+		char[] chs = nonCheckCodeCardId.trim().toCharArray();
+		int luhmSum = 0;
+		for (int i = chs.length - 1, j = 0; i >= 0; i--, j++) {
+			int k = chs[i] - '0';
+			if (j % 2 == 0) {
+				k *= 2;
+				k = k / 10 + k % 10;
+			}
+			luhmSum += k;
+		}
+		return (luhmSum % 10 == 0) ? '0' : (char) ((10 - luhmSum % 10) + '0');
 	}
 
 }

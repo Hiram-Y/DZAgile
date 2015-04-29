@@ -20,12 +20,14 @@ package com.decade.agile.dynamicload;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.os.Build;
 import android.util.Log;
 import dalvik.system.DexClassLoader;
 
@@ -144,7 +146,7 @@ public class DLPluginManager {
      * @return One of below: {@link #START_RESULT_SUCCESS} {@link #START_RESULT_NO_PKG}
      *         {@link #START_RESULT_NO_CLASS} {@link #START_RESULT_TYPE_ERROR}
      */
- //   @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public int startPluginActivityForResult(Context context, DLIntent dlIntent, int requestCode) {
         if (mFrom == DLConstants.FROM_INTERNAL) {
             dlIntent.setClassName(context, dlIntent.getPluginClass());

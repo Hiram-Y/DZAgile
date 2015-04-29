@@ -36,11 +36,13 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 
 public @interface DCInjectView {
+	
+	public static final int DEFAULT_VALUE = -1;
 
 	/**
 	 * @return 控件ID, 如果声明的变量名就是id,可以省去参数，否则应加上id.
 	 */
-	public int id() default ResId.DEFAULT_VALUE;
+	public int id() default DEFAULT_VALUE;
 	
 	/**
 	 * @return onClickListener的回调方法名

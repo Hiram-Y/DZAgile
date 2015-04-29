@@ -27,7 +27,7 @@ import com.decade.agile.kit.DCHandlerFactory;
  * @description: 开场动画Activity (From AndroidKit)
  * @author: Decade
  * @date: 2013-5-24
- * @preserve protected
+ * 
  */
 public abstract class DCIntroActivity extends Activity {
 	/**
@@ -245,7 +245,7 @@ public abstract class DCIntroActivity extends Activity {
 	 * 开场动画的图片资源类。封装了图片、播放时间、开始时的透明程度。
 	 * 
 	 * @author msdx
-	 * @preserve protected
+	 * 
 	 */
 	protected class IntroImgResource implements Serializable {
 		/**

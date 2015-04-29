@@ -6,24 +6,24 @@ import android.util.Log;
  * @description 调试信息输出
  * @author Decade
  * @date 2013-4-22
- * @preserve protected
+ * 
  */
 public class DCLog {
 
 	public static void output(String msg) {
-		if (DCBuild.getDebugMode() && msg != null) {
+		if (DCBuild.isDebugMode() && msg != null) {
 			System.out.println(msg);
 		}
 	}
 
 	public static void output(int msg) {
-		if (DCBuild.getDebugMode()) {
+		if (DCBuild.isDebugMode()) {
 			System.out.println(msg);
 		}
 	}
 
 	public static void i(Class<?> cls, String msg) {
-		if (DCBuild.getDebugMode() && msg != null) {
+		if (DCBuild.isDebugMode() && msg != null) {
 			Log.i(getClassName(cls), msg);
 		}
 	}
@@ -45,13 +45,13 @@ public class DCLog {
 	}
 
 	public static void i(Class<?> cls, String msg, Throwable tr) {
-		if (DCBuild.getDebugMode() && msg != null) {
+		if (DCBuild.isDebugMode() && msg != null) {
 			Log.i(getClassName(cls), msg, tr);
 		}
 	}
 
 	public static void e(Class<?> cls, String msg) {
-		if (DCBuild.getDebugMode() && msg != null) {
+		if (DCBuild.isDebugMode() && msg != null) {
 			Log.e(getClassName(cls), msg);
 		}
 	}
@@ -73,13 +73,13 @@ public class DCLog {
 	}
 
 	public static void e(Class<?> cls, String msg, Throwable tr) {
-		if (DCBuild.getDebugMode() && msg != null) {
+		if (DCBuild.isDebugMode() && msg != null) {
 			Log.e(getClassName(cls), msg, tr);
 		}
 	}
 
 	public static void d(Class<?> cls, String msg) {
-		if (DCBuild.getDebugMode() && msg != null) {
+		if (DCBuild.isDebugMode() && msg != null) {
 			Log.d(getClassName(cls), msg);
 		}
 	}
@@ -101,13 +101,13 @@ public class DCLog {
 	}
 
 	public static void d(Class<?> cls, String msg, Throwable tr) {
-		if (DCBuild.getDebugMode() && msg != null) {
+		if (DCBuild.isDebugMode() && msg != null) {
 			Log.d(getClassName(cls), msg, tr);
 		}
 	}
 
 	public static void w(Class<?> cls, String msg) {
-		if (DCBuild.getDebugMode() && msg != null) {
+		if (DCBuild.isDebugMode() && msg != null) {
 			Log.w(getClassName(cls), msg);
 		}
 	}
@@ -129,13 +129,13 @@ public class DCLog {
 	}
 
 	public static void w(Class<?> cls, String msg, Throwable tr) {
-		if (DCBuild.getDebugMode() && msg != null) {
+		if (DCBuild.isDebugMode() && msg != null) {
 			Log.w(getClassName(cls), msg, tr);
 		}
 	}
 
 	public static void w(Class<?> cls, Throwable tr) {
-		if (DCBuild.getDebugMode()) {
+		if (DCBuild.isDebugMode()) {
 			Log.w(getClassName(cls), tr);
 		}
 	}

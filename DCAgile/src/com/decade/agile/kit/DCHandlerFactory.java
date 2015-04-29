@@ -16,7 +16,7 @@ import android.os.Looper;
  * @description: 线程工厂类。(From AndroidKit)
  * @author: Decade
  * @date: 2013-5-24
- * @preserve protected
+ * 
  */
 
 public class DCHandlerFactory {
