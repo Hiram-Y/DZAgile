@@ -48,7 +48,7 @@ public class DZPickDialogView extends DZCommonDialogView {
 	public void setSelected(int index) {
 		DZPickDialogAdapter adapter = (DZPickDialogAdapter) single_selection_lsv
 				.getAdapter();
-		List<DCPickItem> items = adapter.getList();
+		List<DZPickItem> items = adapter.getList();
 		for (int i = 0; i < items.size(); i++) {
 			if (index == i) {
 				items.get(i).setSelected(true);
@@ -57,12 +57,12 @@ public class DZPickDialogView extends DZCommonDialogView {
 		adapter.notifyDataSetChanged();
 	}
 
-	public static class DCPickItem {
+	public static class DZPickItem {
 		private int _iconId;
 		private String _title;
 		private boolean _selected;
 
-		public DCPickItem(String title) {
+		public DZPickItem(String title) {
 			_title = title;
 		}
 
