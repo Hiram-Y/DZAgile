@@ -195,4 +195,4 @@ public class M_Login extends M_Base { //这个继承是为了解析共有属性�
 ##@作者
 ### Decade.Zuo (dz)
   联系方式
-  QQ：397912357
+  讨论群：204424199
